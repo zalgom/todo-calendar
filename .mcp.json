@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "supabase": {
+      "command": "npx",
+      "args": ["@supabase-community/mcp-server-supabase"],
+      "description": "Supabase MCP Server for database and auth management"
+    }
+  }
+}
