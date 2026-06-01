@@ -14,15 +14,15 @@ export default function Header() {
 
   return (
     <header
-      className="sticky top-0 z-10 px-4 py-4 md:px-8 md:py-5 flex items-center justify-between"
+      className="sticky top-0 z-10 px-4 py-4 md:px-8 md:py-5 flex flex-col items-center justify-center relative"
       style={{
         backgroundColor: 'var(--app-surface)',
         borderBottom: '1px solid var(--app-border)',
         backdropFilter: 'blur(8px)',
       }}
     >
-      {/* 앱 이름 및 부제목 */}
-      <div className="flex flex-col gap-0.5">
+      {/* 앱 이름 및 부제목 (가운데 정렬) */}
+      <div className="flex flex-col gap-0.5 text-center">
         <h1
           className="text-2xl md:text-3xl font-bold tracking-tight"
           style={{
@@ -41,23 +41,25 @@ export default function Header() {
         </p>
       </div>
 
-      {/* 로그아웃 버튼 */}
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={logout}
-        disabled={isLoading}
-        className="text-sm font-medium transition-all duration-200 hover:shadow-md"
-        style={{
-          backgroundColor: 'var(--app-accent-light)',
-          borderColor: 'var(--app-accent-primary)',
-          color: 'var(--app-accent-primary)',
-          minHeight: '40px',
-          minWidth: '90px',
-        }}
-      >
-        {isLoading ? '중...' : '로그아웃'}
-      </Button>
+      {/* 로그아웃 버튼 (우측 상단) */}
+      <div className="absolute right-4 top-4 md:right-8 md:top-5">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={logout}
+          disabled={isLoading}
+          className="text-sm font-medium transition-all duration-200 hover:shadow-md"
+          style={{
+            backgroundColor: 'var(--app-accent-light)',
+            borderColor: 'var(--app-accent-primary)',
+            color: 'var(--app-accent-primary)',
+            minHeight: '40px',
+            minWidth: '90px',
+          }}
+        >
+          {isLoading ? '중...' : '로그아웃'}
+        </Button>
+      </div>
     </header>
   )
 }
