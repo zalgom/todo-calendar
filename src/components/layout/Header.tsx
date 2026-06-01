@@ -14,51 +14,54 @@ export default function Header() {
 
   return (
     <header
-      className="sticky top-0 z-10 px-4 py-4 md:px-8 md:py-5 flex flex-col items-center justify-center relative"
+      className="sticky top-0 z-10 px-4 py-4 md:px-6 flex items-center"
       style={{
         backgroundColor: 'var(--app-surface)',
         borderBottom: '1px solid var(--app-border)',
         backdropFilter: 'blur(8px)',
       }}
     >
-      {/* 앱 이름 및 부제목 (가운데 정렬) */}
-      <div className="flex flex-col gap-0.5 text-center">
-        <h1
-          className="text-2xl md:text-3xl font-bold tracking-tight"
-          style={{
-            fontFamily: 'var(--font-display)',
-            color: 'var(--app-accent-primary)',
-            letterSpacing: '-0.5px',
-          }}
-        >
-          투두 캘린더
-        </h1>
-        <p
-          className="text-xs md:text-sm"
-          style={{ color: 'var(--app-text-tertiary)' }}
-        >
-          날짜를 통해 할 일 관리
-        </p>
-      </div>
+      {/* 메인 페이지와 동일한 그리드 레이아웃 */}
+      <div className="max-w-5xl w-full mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.5fr] lg:grid-cols-[1fr_2fr] gap-4 md:gap-6 items-center">
+        {/* 좌측: 캘린더 위치 - 제목 및 부제목 */}
+        <div className="flex flex-col gap-0.5">
+          <h1
+            className="text-2xl md:text-3xl font-bold tracking-tight"
+            style={{
+              fontFamily: 'var(--font-display)',
+              color: 'var(--app-accent-primary)',
+              letterSpacing: '-0.5px',
+            }}
+          >
+            투두 캘린더
+          </h1>
+          <p
+            className="text-xs md:text-sm"
+            style={{ color: 'var(--app-text-tertiary)' }}
+          >
+            날짜를 통해 할 일 관리
+          </p>
+        </div>
 
-      {/* 로그아웃 버튼 (우측 상단) */}
-      <div className="absolute right-4 top-4 md:right-8 md:top-5">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={logout}
-          disabled={isLoading}
-          className="text-sm font-medium transition-all duration-200 hover:shadow-md"
-          style={{
-            backgroundColor: 'var(--app-accent-light)',
-            borderColor: 'var(--app-accent-primary)',
-            color: 'var(--app-accent-primary)',
-            minHeight: '40px',
-            minWidth: '90px',
-          }}
-        >
-          {isLoading ? '중...' : '로그아웃'}
-        </Button>
+        {/* 우측: 투두 위치 - 로그아웃 버튼 */}
+        <div className="flex justify-end">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={logout}
+            disabled={isLoading}
+            className="text-sm font-medium transition-all duration-200 hover:shadow-md"
+            style={{
+              backgroundColor: 'var(--app-accent-light)',
+              borderColor: 'var(--app-accent-primary)',
+              color: 'var(--app-accent-primary)',
+              minHeight: '40px',
+              minWidth: '90px',
+            }}
+          >
+            {isLoading ? '중...' : '로그아웃'}
+          </Button>
+        </div>
       </div>
     </header>
   )
